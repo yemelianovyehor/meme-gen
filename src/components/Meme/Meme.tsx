@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './Meme.css'
+import {minMemeData} from "src/MemesAPIHandler"
 
 interface MemeProps {
-    memeUrl: string,
-    memeName: string
+    meme: minMemeData
 }
 interface MemeState {
     
@@ -14,7 +14,7 @@ class Meme extends React.Component<MemeProps, MemeState> {
     render() { 
         return ( 
             <div className='meme-container'>
-            <img src={this.props.memeUrl} alt={this.props.memeName} className='meme-img'/>
+            <img src={this.props.meme.url} alt={this.props.meme.name} className='meme-img'/>
             </div>
          );
     }

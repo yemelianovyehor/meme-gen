@@ -3,22 +3,18 @@ import Form from '@components/Form/Form';
 import Meme from '@components/Meme/Meme';
 import Header from '@components/Header/Header';
 import './App.css'
-import {getMemes} from './getMemesAPI';
+import {getRandomMeme} from './MemesAPIHandler';
 
-const Memes = await getMemes();
+
 
  
 const App = () => {
   
-  const [MemeObj, setMemeObj] = React.useState(randomMeme());
-
-  function randomMeme(){
-    return Memes[Math.floor(Math.random()*100)]
-  }
+  const [MemeObj, setMemeObj] = React.useState(getRandomMeme());
 
   function updateMeme(){
-    console.log("new meme: "+ randomMeme().url)
-    setMemeObj(randomMeme())
+    console.log("new meme: "+ getRandomMeme().url)
+    setMemeObj(getRandomMeme())
   }
 
   return ( 
@@ -26,7 +22,7 @@ const App = () => {
       <Header/>
       <main>
         <Form buttonClickHandler={updateMeme}/>
-        <Meme memeUrl={MemeObj.url} memeName={MemeObj.name} />
+        <Meme meme={MemeObj} />
       </main>
     </div>
    );
