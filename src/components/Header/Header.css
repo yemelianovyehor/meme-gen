@@ -1,23 +1,22 @@
-header{
-    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
-    display: flex;
-    justify-content:space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-    color: white;
-    height: 70px;
-    
+header {
+	background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+	display: flex;
+	justify-content: space-between;
+	padding-left: 20px;
+	padding-right: 20px;
+	align-items: center;
+	color: white;
+	height: 70px;
 }
-.logo{
-    display: flex;
-    align-items: center;
-    gap:8px;
-    font-weight: 700;
-    letter-spacing: -0.1em;
-    font-size: 25px;
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 700;
+	letter-spacing: -0.1em;
+	font-size: 25px;
 }
 
-.title{
-    font-size: 15px;
+.title {
+	font-size: 15px;
 }

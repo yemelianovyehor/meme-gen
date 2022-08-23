@@ -2,13 +2,9 @@ import * as React from "react";
 import "./Header.css";
 
 /* eslint-disable @typescript-eslint/no-empty-interface */
-interface HeaderProps {
-	
-}
+interface HeaderProps {}
 
-interface HeaderState {
-	
-}
+interface HeaderState {}
 /* eslint-enable @typescript-eslint/no-empty-interface */
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -17,12 +13,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 		return (
 			<header>
 				<div className="logo">
-					<img src="/src/assets/img/logo.svg" alt="Trollface" className='logo-img' />
-                    Meme Generator
+					<img
+						src="/src/assets/img/logo.svg"
+						alt="Trollface"
+						className="logo-img"
+					/>
+					Meme Generator
 				</div>
-				<div className="title">
-                    React Course - Project 3
-				</div>
+				<div className="title">React Course - Project 3</div>
 			</header>
 		);
 	}
