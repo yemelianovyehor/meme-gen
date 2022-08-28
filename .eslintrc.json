@@ -23,5 +23,10 @@
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

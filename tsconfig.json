@@ -17,8 +17,10 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@api/*":["src/APIHandlers/*"],
       "@components/*":["src/components/*"] ,
-      "@img/*":["src/assets/img/*"]
+      "@img/*":["src/assets/img/*"],
+      "@type/*":["src/types/*"],
     }
   },
   "include": ["src"],

@@ -1,10 +1,10 @@
 import * as React from "react";
 import "./Meme.css";
-import { minMemeData } from "src/MemesAPIHandler";
+import { Meme as MemeData } from "src/APIHandlers/MemesAPIHandler";
 
 /* eslint-disable @typescript-eslint/no-empty-interface */
 interface MemeProps {
-	meme: minMemeData;
+	meme: MemeData;
 }
 interface MemeState {}
 /* eslint-enable @typescript-eslint/no-empty-interface */
@@ -13,12 +13,14 @@ class Meme extends React.Component<MemeProps, MemeState> {
 	// state = { :  }
 	render() {
 		return (
-			<div className="meme-container">
+			<div className="meme--container">
 				<img
 					src={this.props.meme.url}
-					alt={this.props.meme.name}
-					className="meme-img"
+					title={this.props.meme.name}
+					className="meme--img"
 				/>
+				<h2 className="meme--text top">{this.props.meme.topText}</h2>
+				<h2 className="meme--text bottom">{this.props.meme.bottomText}</h2>
 			</div>
 		);
 	}
