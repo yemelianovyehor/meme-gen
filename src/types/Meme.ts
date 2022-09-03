@@ -2,8 +2,8 @@ export interface Meme {
 	id: string;
 	name: string;
 	url: string;
-	topText: "";
-	bottomText: "";
+	topText: string;
+	bottomText: string;
 
 	// constructor()
 }

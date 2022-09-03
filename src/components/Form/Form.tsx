@@ -1,13 +1,12 @@
 import * as React from "react";
 import "./Form.css";
 import { Meme } from "@type/Meme";
-// import { getRandomMeme } from "@api/MemesAPIHandler";
-import { getRandomMeme } from "@api/MemesAPIHandler";
 
 /* eslint-disable @typescript-eslint/no-empty-interface */
 interface FormProps {
 	onMemeChange: React.Dispatch<React.SetStateAction<Meme>>;
 	meme: Meme;
+	getNewMeme: ()=>void;
 }
 
 interface FormState {}
@@ -29,13 +28,8 @@ class Form extends React.Component<FormProps, FormState> {
 
 	getNewImage(e: React.FormEvent<HTMLFormElement>): void {
 		e.preventDefault();
-		// console.log("button event");
-		this.props.onMemeChange({
-			...getRandomMeme(),
-			topText: "",
-			bottomText: "",
-		});
-	}
+		this.props.getNewMeme();
+	} 
 
 	render() {
 		return (

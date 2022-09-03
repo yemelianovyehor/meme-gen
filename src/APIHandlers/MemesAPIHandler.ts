@@ -2,36 +2,37 @@ import { Meme } from "@type/Meme";
 import { imgFlipResponse } from "../types/imgFlipResponse";
 
 async function fetchMemes(url: string): Promise<imgFlipResponse> {
-	const res = await fetch(url)
-		.then((response) => checkForErrors(response));
-		//.catch((error) => console.log("Catched: " + error));
-	if(res){
+	const res = await fetch(url).then((response) => checkForErrors(response));
+	//.catch((error) => console.log("Catched: " + error));
+	if (res) {
 		return await res.json();
-	}else{
-		return {success:false};
+	} else {
+		return { success: false };
 	}
 }
 
-function checkForErrors(response: Response){
+function checkForErrors(response: Response) {
 	if (response.ok) {
-		const isJson = response.headers.get("contet-type") === "application/json;charset=UTF-8";
-		if(!isJson){
+		const isJson =
+			response.headers.get("contet-type") === "application/json;charset=UTF-8";
+		if (!isJson) {
 			return response;
-		}else{
+		} else {
 			throw new Error("Response is not application/json.");
 		}
-	}else{
-		throw new Error( `Problem with API: ${response.json()}`);
+	} else {
+		throw new Error(`Problem with API: ${response.json()}`);
 	}
 }
 
 async function getMemes(): Promise<Meme[]> {
-	//// const data = 
-	const response: imgFlipResponse = await fetchMemes("https://api.imgflip.com/get_memes");
-	
-	if(response.success){
+	const response: imgFlipResponse = await fetchMemes(
+		"https://api.imgflip.com/get_memes"
+	);
+
+	if (response.success) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		const memes = response.data!.memes; 
+		const memes = response.data!.memes;
 		return memes.map((item) => {
 			return {
 				id: item.id,
@@ -41,35 +42,23 @@ async function getMemes(): Promise<Meme[]> {
 				bottomText: "",
 			};
 		});
-	}else{
+	} else {
 		return Promise.reject("Error");
 	}
 }
 
-let allMemeObjs : Meme[];
-try{
-	allMemeObjs = await getMemes();
-	// console.log("Memes are called and work fine");
-}
-catch(e){
-	console.log("Cought: " + e);
-}
-
-function getRandomMeme() : Pick<Meme, "id"|"name"|"url"> {
-	try{
-		return allMemeObjs[Math.floor(Math.random() * 100)];
-	}
-	catch(e){
+function getRandomMeme(memes: Meme[]): Pick<Meme, "id" | "name" | "url"> {
+	try {
+		return memes[Math.floor(Math.random() * 100)];
+	} catch (e) {
 		console.log(e);
 		return {
 			id: "error",
 			name: "Gonza Moreira's 404",
-			url:"src/assets/img/Error.png",
-
+			url: "src/assets/img/Error.png",
 		};
 	}
 }
 
-
-export { getRandomMeme };
-export type { Meme};
+export { getRandomMeme, getMemes };
+export type { Meme };

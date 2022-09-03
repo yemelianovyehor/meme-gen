@@ -11,6 +11,8 @@ interface MemeState {}
 
 class Meme extends React.Component<MemeProps, MemeState> {
 	// state = { :  }
+	
+	
 	render() {
 		return (
 			<div className="meme--container">
